@@ -20,7 +20,7 @@ class NotificationService extends GetxService {
   Future<void> _initNotifications() async {
     const androidInitializationSettings =
         AndroidInitializationSettings('@drawable/app_notification_icon');
-    const iosInitializationSettings = IOSInitializationSettings(
+    const iosInitializationSettings = DarwinInitializationSettings(
       requestAlertPermission: false,
       requestSoundPermission: false,
       requestBadgePermission: false,
@@ -30,10 +30,10 @@ class NotificationService extends GetxService {
             android: androidInitializationSettings,
             iOS: iosInitializationSettings);
     _notifications.initialize(initializationSettings,
-        onSelectNotification: (payload) {
+        onDidReceiveNotificationResponse: (payload) {
       if (payload != null) {
         final QuizPaperModel quizPaperModel =
-            QuizPaperModel.fromJson(json.decode(payload));
+            QuizPaperModel.fromJson(json.decode(payload.payload!));
         Get.toNamed(LeaderBoardScreen.routeName, arguments: quizPaperModel);
         //MyApp.navigatorKey.currentState!.pushNamed(LeaderBoardScreen.routeName, arguments:quizPaperModel);
       }
@@ -76,7 +76,7 @@ class NotificationService extends GetxService {
                 largeIcon: FilePathAndroidBitmap(largeIconPath!),
                 styleInformation: bigPictureStyleInformation,
                 priority: Priority.max),
-            iOS: const IOSNotificationDetails(
+            iOS:  DarwinNotificationDetails(
                 presentAlert: true, presentBadge: true, presentSound: true)),
         payload: payload);
   }

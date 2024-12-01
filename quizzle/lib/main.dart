@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:quizzle/screens/data_uploader_screen.dart';
 import 'bindings/initial_binding.dart';
 import 'controllers/common/theme_controller.dart';
 import 'firebase_options.dart';
@@ -27,20 +28,24 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       navigatorKey: navigatorKey,
-      title: 'Flutter Demo',
+      title: 'Flutter Demo',locale: Locale('ar'),
       theme: Get.find<ThemeController>().getLightheme(),
-      darkTheme: Get.find<ThemeController>().getDarkTheme(),
+      // darkTheme: Get.find<ThemeController>().getDarkTheme(),
       getPages: AppRoutes.pages(),
+    // home:DataUploaderScreen(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
 
 Future<void> initFireBase() async {
+
+
+// ...
+
   await Firebase.initializeApp(
-      name: 'quizzle-demo',
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 }
 
 // void main(List<String> args) async {

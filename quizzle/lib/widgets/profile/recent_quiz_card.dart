@@ -60,7 +60,7 @@ class RecentQuizCard extends StatelessWidget {
                         style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color:
-                                Theme.of(context).textTheme.bodyText1!.color),
+                                Theme.of(context).textTheme.bodyLarge!.color),
                         child: FittedBox(
                           fit: BoxFit.scaleDown,
                           child: EasySeparatedRow(

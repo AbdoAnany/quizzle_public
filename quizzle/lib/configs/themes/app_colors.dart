@@ -11,8 +11,8 @@ const mainGradientLT = LinearGradient(
     begin: Alignment.topLeft,
     end: Alignment.bottomRight,
     colors: [
-      kPrimayLightColorLT,
-      kPrimayColorLT,
+      kPrimaryLightColorLT,
+      kPrimaryColorLT,
     ]);
 
 // main gradient pattern for Dark theme

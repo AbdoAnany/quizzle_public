@@ -20,14 +20,14 @@ class QuizPaperController extends GetxController {
   Future<void> getAllPapers() async {
     try {
       QuerySnapshot<Map<String, dynamic>> data = await quizePaperFR.get();
-      final paperList =
-          data.docs.map((paper) => QuizPaperModel.fromSnapshot(paper)).toList();
+      final paperList = data.docs.map((paper) => QuizPaperModel.fromSnapshot(paper)).toList();
       allPapers.assignAll(paperList);
+      print("aaaaaaaaaaaaaa  allPapers.length)");
 
+      print(allPapers.length);
       for (var paper in paperList) {
-        final imageUrl =
-            await Get.find<FireBaseStorageService>().getImage(paper.title);
-        paper.imageUrl = imageUrl;
+        // final imageUrl = await Get.find<FireBaseStorageService>().getImage(paper.title);
+        paper.imageUrl = '';
       }
       allPapers.assignAll(paperList);
     } catch (e) {
@@ -35,13 +35,16 @@ class QuizPaperController extends GetxController {
     }
   }
 
-  void navigatoQuestions({required QuizPaperModel paper, bool isTryAgain = false}) {
+
+  void navigatoQuestions(
+      {required QuizPaperModel paper, bool isTryAgain = false}) {
     AuthController _authController = Get.find();
 
     if (_authController.isLogedIn()) {
       if (isTryAgain) {
         Get.back();
-        Get.offNamed(QuizeScreen.routeName, arguments: paper, preventDuplicates: false);
+        Get.offNamed(QuizeScreen.routeName,
+            arguments: paper, preventDuplicates: false);
       } else {
         Get.toNamed(QuizeScreen.routeName, arguments: paper);
       }
@@ -50,3 +53,4 @@ class QuizPaperController extends GetxController {
     }
   }
 }
+

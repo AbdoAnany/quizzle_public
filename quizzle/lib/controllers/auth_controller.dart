@@ -80,7 +80,7 @@ class AuthController extends GetxController {
   }
 
   void navigateToIntroduction() {
-    Get.offAllNamed(AppIntroductionScreen.routeName);
+    Get.offAllNamed(HomeScreen.routeName);
   }
 
   void showLoginAlertDialog() {

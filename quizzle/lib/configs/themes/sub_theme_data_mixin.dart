@@ -16,8 +16,8 @@ mixin SubThemeData {
 
   TextTheme getTextThemes() {
     return GoogleFonts.quicksandTextTheme(const TextTheme(
-        bodyText1: TextStyle(fontWeight: FontWeight.w400),
-        bodyText2: TextStyle(fontWeight: FontWeight.w400)));
+        bodyLarge: TextStyle(fontWeight: FontWeight.w400),
+        bodyMedium: TextStyle(fontWeight: FontWeight.w400)));
     // return const TextTheme(
     //     bodyText1: TextStyle(fontWeight: FontWeight.bold),
     //     bodyText2: TextStyle(fontWeight: FontWeight.bold));
@@ -32,7 +32,7 @@ mixin SubThemeData {
   }
 
   ButtonStyle getElavatedButtonTheme() {
-    return ElevatedButton.styleFrom(primary: Colors.white);
+    return ElevatedButton.styleFrom(backgroundColor: Colors.white);
   }
 
   BottomNavigationBarThemeData getBottomNavigationBarTheme() {

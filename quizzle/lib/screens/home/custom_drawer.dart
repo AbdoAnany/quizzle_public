@@ -16,7 +16,7 @@ class CustomDrawer extends GetView<MyDrawerController> {
       child: Theme(
         data: ThemeData(
             textButtonTheme: TextButtonThemeData(
-                style: TextButton.styleFrom(primary: kOnSurfaceTextColor))),
+                style: TextButton.styleFrom(foregroundColor: kOnSurfaceTextColor))),
         child: SafeArea(
             child: Stack(
           children: [
@@ -39,11 +39,10 @@ class CustomDrawer extends GetView<MyDrawerController> {
                       ? TextButton.icon(
                           icon: const Icon(Icons.login_rounded),
                           style: TextButton.styleFrom(
-                              padding: const EdgeInsets.symmetric(
+                              foregroundColor: Colors.white, padding: const EdgeInsets.symmetric(
                                   vertical: 10, horizontal: 15),
                               elevation: 0,
-                              backgroundColor: Colors.white.withOpacity(0.5),
-                              primary: Colors.white),
+                              backgroundColor: Colors.white.withOpacity(0.5)),
                           onPressed: () {
                             controller.signIn();
                           },

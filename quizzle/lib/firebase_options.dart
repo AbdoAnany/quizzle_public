@@ -30,6 +30,12 @@ class DefaultFirebaseOptions {
           'DefaultFirebaseOptions have not been configured for macos - '
           'you can reconfigure this by running the FlutterFire CLI again.',
         );
+      case TargetPlatform.fuchsia:
+        // TODO: Handle this case.
+      case TargetPlatform.linux:
+        // TODO: Handle this case.
+      case TargetPlatform.windows:
+        // TODO: Handle this case.
     }
 
     throw UnsupportedError(
@@ -38,30 +44,32 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: '',
-    appId: '',
-    messagingSenderId: '',
-    projectId: '',
-    authDomain: '',
-    storageBucket: '',
-    measurementId: '',
+    apiKey: 'AIzaSyB7y9Rpug5hbwdIxC-JSXf0ucVAK8_IhYo',
+    appId: '1:350986741870:web:83c37dd2c7f5e56cecde7f',
+    messagingSenderId: '350986741870',
+    projectId: 'education-system-ce33c',
+    authDomain: 'education-system-ce33c.firebaseapp.com',
+    storageBucket: 'education-system-ce33c.firebasestorage.app',
+    measurementId: 'G-QFGPXFD41X',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: '',
-    appId: '',
-    messagingSenderId: '',
-    projectId: '',
-    storageBucket: '',
+    apiKey: 'AIzaSyAo__b9kAmLpt1KIwQEiG901ZM9C767VHQ',
+    appId: '1:350986741870:android:ab8a671bad8d2f5becde7f',
+    messagingSenderId: '350986741870',
+    projectId: 'education-system-ce33c',
+    storageBucket: 'education-system-ce33c.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: '',
-    appId: '',
-    messagingSenderId: '',
-    projectId: '',
-    storageBucket: '',
-    iosClientId: '',
-    iosBundleId: '',
+    apiKey: 'AIzaSyADuFcN2tFCseMRoYTOq6qhLNEWrdv6zxc',
+    appId: '1:350986741870:ios:90fd5b5421e5e4d9ecde7f',
+    messagingSenderId: '350986741870',
+    projectId: 'education-system-ce33c',
+    storageBucket: 'education-system-ce33c.firebasestorage.app',
+    androidClientId: '350986741870-rdlm64l13g1d5mijg2o8jllu57rvtvvd.apps.googleusercontent.com',
+    iosClientId: '350986741870-gjuuar4a58globmq209c792vce25dlvh.apps.googleusercontent.com',
+    iosBundleId: 'com.codefox.quizzle',
   );
+
 }
