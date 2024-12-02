@@ -1,9 +1,13 @@
 import 'package:get/get.dart';
 import 'package:quizzle/controllers/controllers.dart';
 import 'package:quizzle/controllers/quiz_paper/ClassController.dart';
+import 'package:quizzle/controllers/quiz_paper/StudyYearsController.dart';
 import 'package:quizzle/screens/screens.dart';
 
+import '../controllers/quiz_paper/ContentController.dart';
 import '../controllers/quiz_paper/SubjectsController.dart';
+import '../screens/home/ContantScreen.dart';
+import '../screens/home/StudyYearsScreen.dart';
 import '../screens/home/SubjectsScreen.dart';
 
 class AppRoutes {
@@ -23,7 +27,25 @@ class AppRoutes {
               Get.put(QuizPaperController());
               Get.put(ClassController());
               Get.put(MyDrawerController());
-            })),    GetPage(
+            })),
+
+    GetPage(
+            page: () =>  StudyYearsScreen(),
+            name: StudyYearsScreen.routeName,
+            binding: BindingsBuilder(() {
+              Get.put(StudyYearsController());
+              Get.put(ClassController());
+              // Get.put(MyDrawerController());
+            })),
+    GetPage(
+            page: () =>  ContentScreen(),
+            name: ContentScreen.routeName,
+            binding: BindingsBuilder(() {
+              Get.put(ContentController());
+              // Get.put(ClassController());
+              // Get.put(MyDrawerController());
+            })),
+    GetPage(
             page: () =>  SubjectsScreen(),
             name: SubjectsScreen.routeName,
             binding: BindingsBuilder(() {

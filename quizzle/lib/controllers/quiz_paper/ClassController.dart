@@ -1,7 +1,10 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../models/ClassModel.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '../../models/SchoolStageModel.dart';
 
 enum ClassType {all, primary,preparatory, secondary }
 class ClassController extends GetxController {
@@ -36,6 +39,175 @@ class ClassController extends GetxController {
       ).toList();
     }
   }
+
+
+
+// Initialize the list of school stages with simple descriptions
+  final List<SchoolStageModel> schoolStageList = [
+    SchoolStageModel(
+      id: 1,
+      name: "المرحلة رياض الاطفال",
+      des: "مرحلة تأسيسية للأطفال من سن 4 إلى 6 سنوات.",
+      image: "",
+      color: Colors.blue.value,
+      type: "kg",
+      studyYearLevel: [
+        SchoolStageModel(
+          id: 11,
+          name: "Kg 1",
+          des: "مرحلة تأسيسية للأطفال من سن 4 إلى 5 سنوات.",
+          image: "",
+          color: Colors.blue.value,
+          type: "kg",
+          studyYearLevel: [
+            SchoolStageModel(
+              id: 111,
+              name: "محتوى تفاعلي",
+              des: "محتوى تفاعلي للأطفال.",
+              image: "",
+              color: Colors.blue.value,
+              type: "kg1",
+            ),
+            SchoolStageModel(
+              id: 112,
+              name: "كتاب الطالب",
+              des: "كتاب الطالب.",
+              image: "",
+              color: Colors.blue.value,
+              type: "kg1",
+            ),
+            SchoolStageModel(
+              id: 113,
+              name: "مواد إثرائية",
+              des: "مواد إثرائية.",
+              image: "",
+              color: Colors.blue.value,
+              type: "kg1",
+            ),
+            SchoolStageModel(
+              id: 114,
+              name: "دليل المعلم",
+              des: "دليل المعلم.",
+              image: "",
+              color: Colors.blue.value,
+              type: "kg1",
+            ),
+            SchoolStageModel(
+              id: 115,
+              name: "نماذج اختبارية",
+              des: "نماذج اختبارية للأطفال للتدريب.",
+              image: "",
+              color: Colors.blue.value,
+              type: "kg1",
+            ),
+          ],
+        ),
+        SchoolStageModel(
+          id: 12,
+          name: "Kg 2",
+          des: "مرحلة تأسيسية للأطفال من سن 5 إلى 6 سنوات.",
+          image: "",
+          color: Colors.blue.value,
+          type: "kg",
+          studyYearLevel: [
+            SchoolStageModel(
+              id: 121,
+              name: "محتوى تفاعلي",
+              des: "محتوى تفاعلي للأطفال.",
+              image: "",
+              color: Colors.blue.value,
+              type: "kg2",
+            ),
+            SchoolStageModel(
+              id: 122,
+              name: "كتاب الطالب",
+              des: "كتاب الطالب.",
+              image: "",
+              color: Colors.blue.value,
+              type: "kg2",
+            ),
+          ],
+        ),
+      ],
+    ),
+    SchoolStageModel(
+      id: 2,
+      name: "المرحلة الإبتدائية",
+      des: "مرحلة التعليم الأساسي من الصف الأول إلى السادس.",
+      image: "",
+      color: Colors.green.value,
+      type: "primary",
+      studyYearLevel: [
+        SchoolStageModel(
+          id: 21,
+          name: "الصف الأول الإبتدائي",
+          des: "الصف الأول من التعليم الابتدائي.",
+          image: "",
+          color: Colors.green.value,
+          type: "primary",
+          studyYearLevel: [
+            SchoolStageModel(
+              id: 211,
+              name: "الرياضيات",
+              des: "مادة الرياضيات للصف الأول.",
+              image: "",
+              color: Colors.green.value,
+              type: "primary",
+            ),
+            SchoolStageModel(
+              id: 212,
+              name: "اللغة العربية",
+              des: "مادة اللغة العربية.",
+              image: "",
+              color: Colors.green.value,
+              type: "primary",
+            ),
+          ],
+        ),
+        SchoolStageModel(
+          id: 22,
+          name: "الصف الثاني الإبتدائي",
+          des: "الصف الثاني من التعليم الابتدائي.",
+          image: "",
+          color: Colors.green.value,
+          type: "primary",
+        ),
+      ],
+    ),
+    SchoolStageModel(
+      id: 3,
+      name: "المرحلة الإعدادية",
+      des: "مرحلة التعليم المتوسط من الصف السابع إلى التاسع.",
+      image: "",
+      color: Colors.orange.value,
+      type: "middle",
+    ),
+    SchoolStageModel(
+      id: 4,
+      name: "المرحلة الثانوية",
+      des: "مرحلة التعليم الثانوي من الصف العاشر إلى الثاني عشر.",
+      image: "",
+      color: Colors.purple.value,
+      type: "high",
+    ),
+    SchoolStageModel(
+      id: 5,
+      name: "ذوي الإحتياجات الخاصة (بث تجريبى)",
+      des: "مرحلة مخصصة لتعليم ذوي الإحتياجات الخاصة.",
+      image: "",
+      color: Colors.indigo.value,
+      type: "special",
+    ),
+    SchoolStageModel(
+      id: 6,
+      name: "التعليم المجتمعي",
+      des: "مرحلة تعليمية موجهة للمجتمع المحلي.",
+      image: "",
+      color: Colors.brown.value,
+      type: "community",
+    ),
+  ];
+
   void addClassesToFirestore() async {
     final FirebaseFirestore firestore = FirebaseFirestore.instance;
     final CollectionReference classesCollection = firestore.collection('classes');

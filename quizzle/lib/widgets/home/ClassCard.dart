@@ -11,6 +11,8 @@ import '../../configs/themes/ui_parameters.dart';
 import '../../controllers/quiz_paper/ClassController.dart';
 import '../../controllers/quiz_paper/quiz_papers_controller.dart';
 import '../../models/ClassModel.dart';
+import '../../models/SchoolStageModel.dart';
+import '../../screens/home/StudyYearsScreen.dart';
 import '../../screens/home/SubjectsScreen.dart';
 import '../../screens/home/home_screen.dart';
 import '../../screens/leaderboard/leaderboard_screen.dart';
@@ -20,6 +22,151 @@ import '../common/icon_with_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+class SchoolStageCard extends StatelessWidget {
+  final SchoolStageModel model;
+  const SchoolStageCard({Key? key, required this.model}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Get.toNamed(StudyYearsScreen.routeName, arguments: model);
+
+
+        // Navigation or further actions
+      },
+      child: Container(height: 80,
+        margin: EdgeInsets.symmetric(vertical: 8, horizontal: 4),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [
+             Color(model.color).withOpacity(.8),
+              Color(model.color),
+              // Theme.of(context).primaryColor,
+              // Theme.of(context).primaryColor.withOpacity(.8),
+              // Theme.of(context).primaryColor,
+
+              // Theme.of(context).primaryColor,
+              // Theme.of(context).primaryColor,
+              // Theme.of(context).primaryColor,
+
+      // Colors.blue.shade800,
+
+              // Color(model.color),
+            ],//_getGradientColors(model.type!),
+
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+          borderRadius: BorderRadius.circular(12),
+          // boxShadow: [
+          //   BoxShadow(
+          //     color:  _getGradientColors(model.type!).first.withOpacity(0.3),
+          //     spreadRadius: 2,
+          //     blurRadius: 10,
+          //     offset: Offset(0, 5),
+          //   )
+          // ],
+        ),
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+
+              // // Type Icon
+              // Container(
+              //   padding: EdgeInsets.all(12),
+              //   decoration: BoxDecoration(
+              //     color: Colors.white.withOpacity(0.2),
+              //     shape: BoxShape.circle,
+              //   ),
+              //   child: Icon(
+              //     _getIconForType(model.type!),
+              //     color: Colors.white,
+              //     size: 30,
+              //   ),
+              // ),
+              //
+              // SizedBox(height: 16),
+
+              Text(
+                model.name!,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Colors.white,
+
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+
+              // // Status Indicator
+              // Container(
+              //   padding: EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+              //   decoration: BoxDecoration(
+              //     color: model.isActive
+              //         ? Colors.green.withOpacity(0.7)
+              //         : Colors.red.withOpacity(0.7),
+              //     borderRadius: BorderRadius.circular(10),
+              //   ),
+              //   child: Text(
+              //     model.isActive ? 'أكتشف' : 'لا يوجد',
+              //     style: TextStyle(
+              //       color: Colors.white,
+              //       fontSize: 12,
+              //       fontWeight: FontWeight.bold,
+              //     ),
+              //   ),
+              // ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  List<Color> _getGradientColors(String type) {
+    switch (type) {
+      case 'primary':
+        return [Colors.blue[400]!, Colors.blue[700]!];
+      case 'secondary':
+        return [Colors.purple[400]!, Colors.purple[700]!];
+      case 'preparatory':
+        return [Colors.orange[400]!, Colors.orange[700]!];
+      default:
+        return [Colors.deepPurple[400]!, Colors.deepPurple[700]!];
+    }
+  }
+
+  IconData _getIconForType(String type) {
+    switch (type) {
+      case 'primary':
+        return Iconsax.teacher;
+      case 'secondary':
+        return Iconsax.teacher;
+      case 'preparatory':
+        return Iconsax.teacher;
+      default:
+        return Iconsax.teacher;
+    }
+  }
+
+  String _getSubtitleForType(String type) {
+    switch (type) {
+      case 'primary':
+        return 'Elementary Level';
+      case 'secondary':
+        return 'Advanced Preparation';
+
+      case 'preparatory':
+        return 'Intermediate Level';
+      default:
+        return 'Educational Class';
+    }
+  }
+}
 class ClassCard extends StatelessWidget {
   final ClassModel model;
 
